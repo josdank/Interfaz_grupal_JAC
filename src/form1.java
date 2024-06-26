@@ -90,7 +90,7 @@ public class form1 {
                     if (numero2 != 0) {
                         respuesta.setText(String.valueOf(numero1 / numero2));
                     }else {
-                        respuesta.setText("No se puede para 0");
+                        respuesta.setText("No se puede para 0, no sea gil animal ");
                     }
                     respuesta.setText(respuesta.getText());
                 }
