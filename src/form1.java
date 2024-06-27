@@ -18,6 +18,7 @@ public class form1 {
     private JButton igual;
     private JTextField respuesta;
     private JLabel signo;
+    private JButton cancelButton;
 
     public form1() {
         suma.addActionListener(new ActionListener() {
@@ -26,105 +27,176 @@ public class form1 {
                 signo.setText(" + ");
             }
         });
+
         resta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signo.setText(" - ");
             }
         });
+
         multiplicación.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signo.setText(" * ");
             }
         });
+
         division.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signo.setText(" / ");
             }
         });
+
         raiz.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signo.setText(" √ ");
             }
         });
+
         npotencia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                signo.setText(" x^ ");
+                signo.setText(" X^ ");
             }
         });
+
         sen.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {signo.setText(" sen ");}
+            public void actionPerformed(ActionEvent e) {
+                signo.setText(" SEN ");}
         });
+
+        cos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                signo.setText(" COS ");}
+        });
+
+        tan.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                signo.setText(" TAN ");
+            }
+        });
+
         igual.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (signo.getText().equals(" + ")) {
-                    signo.setText(" + ");
-                    float numero1 = Float.parseFloat(n1.getText());
-                    float numero2 = Float.parseFloat(n2.getText());
-                    if (numero1 != 0 && numero2 != 0) {
-                        respuesta.setText(String.valueOf(String.format("%.2f",(numero1 + numero2))));
-                    }
-                    respuesta.setText(respuesta.getText());
-                } else if (signo.getText().equals(" - ")) {
-                    signo.setText(" - ");
-                    float numero1 = Float.parseFloat(n1.getText());
-                    float numero2 = Float.parseFloat(n2.getText());
-                    if (numero1 != 0 && numero2 != 0) {
-                        respuesta.setText(String.valueOf(String.format("%.2f",(numero1 - numero2))));
-                    }
-                    respuesta.setText(respuesta.getText());
-                }else if (signo.getText().equals(" * ")) {
-                    signo.setText(" * ");
-                    float numero1 = Float.parseFloat(n1.getText());
-                    float numero2 = Float.parseFloat(n2.getText());
-                    if (numero1 != 0 && numero2 != 0) {
-                        respuesta.setText(String.valueOf(String.format("%.2f",(numero1 * numero2))));
-                    }
-                    respuesta.setText(respuesta.getText());
-                }else if (signo.getText().equals(" / ")) {
-                    signo.setText(" / ");
-                    float numero1 = Float.parseFloat(n1.getText());
-                    float numero2 = Float.parseFloat(n2.getText());
-                    if (numero2 != 0) {
-                        respuesta.setText(String.valueOf(String.format("%.2f",(numero1 / numero2))));
-                    }else {
-                        respuesta.setText("No se puede para 0, no sea gil animal ");
-                    }
-                    respuesta.setText(respuesta.getText());
-                } else if (signo.getText().equals(" √ ")) {
-                    signo.setText(" √ ");
-                    float numero1 = Float.parseFloat(n1.getText());
-                    float numero2 = Float.parseFloat(n2.getText());
-                    double raiz = Math.pow(numero2, 1.0 / numero1);
-                    respuesta.setText(String.valueOf(String.format("%.2f",(raiz))));
-                } else if (signo.getText().equals(" x^ ")) {
-                    signo.setText(" x^ ");
-                    float numero1 = Float.parseFloat(n1.getText());
-                    float numero2 = Float.parseFloat(n2.getText());
-                    double resultado = Math.pow(numero1, numero2);
-                    respuesta.setText(String.valueOf(String.format("%.2f",(resultado))));
-                } else if (signo.getText().equals(" sen ")) {
-                    signo.setText(" sen ");
-                    float numero1 = Float.parseFloat(n1.getText());
-                    float numero2 = Float.parseFloat(n2.getText());
+                float numero1, numero2;
+                double angulo, resultado;
 
-                    if (numero2 == 0) {
-                        double angulo = Math.toRadians(numero1);
-                        double resultado = Math.sin(angulo);
-                        respuesta.setText(String.valueOf(String.format("%.2f",(resultado))));
-                    } else {
-                        double angulo = Math.toRadians(numero1);
-                        double resultado = Math.sin(angulo);
-                        respuesta.setText(String.valueOf(String.format("%.2f",(resultado * numero2))));
-                    }
+                switch (signo.getText().trim().toUpperCase()) {
+                    case "+":
+                        signo.setText("+");
+                        numero1 = Float.parseFloat(n1.getText());
+                        numero2 = Float.parseFloat(n2.getText());
+                        if (numero1 != 0 && numero2 != 0) {
+                            respuesta.setText(String.valueOf(String.format("%.2f", (numero1 + numero2))));
+                        }
+                        break;
+
+                    case "-":
+                        signo.setText("-");
+                        numero1 = Float.parseFloat(n1.getText());
+                        numero2 = Float.parseFloat(n2.getText());
+                        if (numero1 != 0 && numero2 != 0) {
+                            respuesta.setText(String.valueOf(String.format("%.2f", (numero1 - numero2))));
+                        }
+                        break;
+
+                    case "*":
+                        signo.setText("*");
+                        numero1 = Float.parseFloat(n1.getText());
+                        numero2 = Float.parseFloat(n2.getText());
+                        if (numero1 != 0 && numero2 != 0) {
+                            respuesta.setText(String.valueOf(String.format("%.2f", (numero1 * numero2))));
+                        }
+                        break;
+
+                    case "/":
+                        signo.setText("/");
+                        numero1 = Float.parseFloat(n1.getText());
+                        numero2 = Float.parseFloat(n2.getText());
+                        if (numero1 != 0 && numero2 != 0) {
+                            respuesta.setText(String.valueOf(String.format("%.2f", (numero1 / numero2))));
+                        }
+                        break;
+
+                    case "√":
+                        signo.setText("√");
+                        numero1 = Float.parseFloat(n1.getText());
+                        numero2 = Float.parseFloat(n2.getText());
+                        double raiz = Math.pow(numero2, 1.0 / numero1);
+                        respuesta.setText(String.valueOf(String.format("%.2f", (raiz))));
+                        break;
+
+                    case "X^":
+                        signo.setText("X^");
+                        numero1 = Float.parseFloat(n1.getText());
+                        numero2 = Float.parseFloat(n2.getText());
+                        resultado = Math.pow(numero1, numero2);
+                        respuesta.setText(String.valueOf(String.format("%.2f", (resultado))));
+                        break;
+
+                    case "SEN":
+                        signo.setText("SEN");
+                        numero1 = Float.parseFloat(n1.getText());
+                        numero2 = Float.parseFloat(n2.getText());
+                        if (numero2 == 0) {
+                            angulo = Math.toRadians(numero1);
+                            resultado = Math.sin(angulo);
+                            respuesta.setText(String.valueOf(String.format("%.2f", (resultado))));
+                        } else {
+                            angulo = Math.toRadians(numero1);
+                            resultado = Math.sin(angulo);
+                            respuesta.setText(String.valueOf(String.format("%.2f", (resultado * numero2))));
+                        }
+                        break;
+
+                    case "COS":
+                        signo.setText("COS");
+                        numero1 = Float.parseFloat(n1.getText());
+                        numero2 = Float.parseFloat(n2.getText());
+                        if (numero2 == 0) {
+                            angulo = Math.toRadians(numero1);
+                            resultado = Math.cos(angulo);
+                            respuesta.setText(String.valueOf(String.format("%.2f", (resultado))));
+                        } else {
+                            angulo = Math.toRadians(numero1);
+                            resultado = Math.cos(angulo);
+                            respuesta.setText(String.valueOf(String.format("%.2f", (resultado * numero2))));
+                        }
+                        break;
+
+                    case "TAN":
+                        signo.setText("TAN");
+                        numero1 = Float.parseFloat(n1.getText());
+                        numero2 = Float.parseFloat(n2.getText());
+                        if (numero2 == 0) {
+                            angulo = Math.toRadians(numero1);
+                            resultado = Math.tan(angulo);
+                            respuesta.setText(String.valueOf(String.format("%.2f", (resultado))));
+                        } else {
+                            angulo = Math.toRadians(numero1);
+                            resultado = Math.tan(angulo);
+                            respuesta.setText(String.valueOf(String.format("%.2f", (resultado * numero2))));
+                        }
+                        break;
                 }
+
             }
         });
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                n1.setText(null);
+                n2.setText(null);
+                respuesta.setText(null);
+            }
+        });
+
     }
 }
