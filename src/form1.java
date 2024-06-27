@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 public class form1 {
     public JPanel mainPanel;
@@ -19,6 +21,7 @@ public class form1 {
     private JTextField respuesta;
     private JLabel signo;
     private JButton cancelButton;
+    private JLabel coment;
 
     public form1() {
         suma.addActionListener(new ActionListener() {
@@ -46,6 +49,7 @@ public class form1 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signo.setText(" / ");
+                coment.setText("La division no puede ser para 0");
             }
         });
 
@@ -53,6 +57,8 @@ public class form1 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signo.setText(" √ ");
+                coment.setText("El primer número sera el indice y el segundo el radical");
+
             }
         });
 
@@ -60,13 +66,16 @@ public class form1 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signo.setText(" X^ ");
+                coment.setText("El primer número sera la base y el segundo el exponente");
             }
         });
 
         sen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                signo.setText(" SEN ");}
+                signo.setText(" SEN ");
+                coment.setText("");
+            }
         });
 
         cos.addActionListener(new ActionListener() {
@@ -120,9 +129,12 @@ public class form1 {
                         signo.setText("/");
                         numero1 = Float.parseFloat(n1.getText());
                         numero2 = Float.parseFloat(n2.getText());
-                        if (numero1 != 0 && numero2 != 0) {
-                            respuesta.setText(String.valueOf(String.format("%.2f", (numero1 / numero2))));
+                        if (numero2 != 0) {
+                            respuesta.setText(String.valueOf(String.format("%.2f",(numero1 / numero2))));
+                        }else {
+                            respuesta.setText("Que NO se puede para 0!! no sea gil animal ");
                         }
+                        respuesta.setText(respuesta.getText());
                         break;
 
                     case "√":
@@ -195,8 +207,15 @@ public class form1 {
                 n1.setText(null);
                 n2.setText(null);
                 respuesta.setText(null);
+                coment.setText(null);
             }
         });
 
+        coment.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                super.componentResized(e);
+            }
+        });
     }
 }
