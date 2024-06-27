@@ -74,20 +74,23 @@ public class form1 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signo.setText(" SEN ");
-                coment.setText("");
+                coment.setText("El primer número sera el angulo y el segundo sera el valor por el cual se multiplicara el resultado");
             }
         });
 
         cos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                signo.setText(" COS ");}
+                signo.setText(" COS ");
+                coment.setText("El primer número sera el angulo y el segundo sera el valor por el cual se multiplicara el resultado");
+            }
         });
 
         tan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signo.setText(" TAN ");
+                coment.setText("El primer número sera el angulo y el segundo sera el valor por el cual se multiplicara el resultado");
             }
         });
 
@@ -156,7 +159,12 @@ public class form1 {
                     case "SEN":
                         signo.setText("SEN");
                         numero1 = Float.parseFloat(n1.getText());
-                        numero2 = Float.parseFloat(n2.getText());
+                        String textoNumero2 = n2.getText().trim();
+                        if (textoNumero2.isEmpty()) {
+                            numero2 = 0;
+                        } else {
+                            numero2 = Float.parseFloat(textoNumero2);
+                        }
                         if (numero2 == 0) {
                             angulo = Math.toRadians(numero1);
                             resultado = Math.sin(angulo);
@@ -171,7 +179,12 @@ public class form1 {
                     case "COS":
                         signo.setText("COS");
                         numero1 = Float.parseFloat(n1.getText());
-                        numero2 = Float.parseFloat(n2.getText());
+                        textoNumero2 = n2.getText().trim();
+                        if (textoNumero2.isEmpty()) {
+                            numero2 = 0;
+                        } else {
+                            numero2 = Float.parseFloat(textoNumero2);
+                        }
                         if (numero2 == 0) {
                             angulo = Math.toRadians(numero1);
                             resultado = Math.cos(angulo);
@@ -186,7 +199,12 @@ public class form1 {
                     case "TAN":
                         signo.setText("TAN");
                         numero1 = Float.parseFloat(n1.getText());
-                        numero2 = Float.parseFloat(n2.getText());
+                        textoNumero2 = n2.getText().trim();
+                        if (textoNumero2.isEmpty()) {
+                            numero2 = 0;
+                        } else {
+                            numero2 = Float.parseFloat(textoNumero2);
+                        }
                         if (numero2 == 0) {
                             angulo = Math.toRadians(numero1);
                             resultado = Math.tan(angulo);
