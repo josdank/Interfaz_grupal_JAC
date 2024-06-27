@@ -4,8 +4,8 @@ public class Main {
         JFrame frame = new JFrame("Mi aplicación");
         frame.setContentPane(new form1().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(900, 800);
         frame.pack();
+        frame.setSize(500, 250);
         frame.setVisible(true);
     }
 }
