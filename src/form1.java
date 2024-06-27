@@ -110,35 +110,7 @@ public class form1 {
                         }
                         break;
 
-                    case "-":
-                        signo.setText("-");
-                        numero1 = Float.parseFloat(n1.getText());
-                        numero2 = Float.parseFloat(n2.getText());
-                        if (numero1 != 0 && numero2 != 0) {
-                            respuesta.setText(String.valueOf(String.format("%.2f", (numero1 - numero2))));
-                        }
-                        break;
 
-                    case "*":
-                        signo.setText("*");
-                        numero1 = Float.parseFloat(n1.getText());
-                        numero2 = Float.parseFloat(n2.getText());
-                        if (numero1 != 0 && numero2 != 0) {
-                            respuesta.setText(String.valueOf(String.format("%.2f", (numero1 * numero2))));
-                        }
-                        break;
-
-                    case "/":
-                        signo.setText("/");
-                        numero1 = Float.parseFloat(n1.getText());
-                        numero2 = Float.parseFloat(n2.getText());
-                        if (numero2 != 0) {
-                            respuesta.setText(String.valueOf(String.format("%.2f",(numero1 / numero2))));
-                        }else {
-                            respuesta.setText("Que NO se puede para 0!! no sea gil animal ");
-                        }
-                        respuesta.setText(respuesta.getText());
-                        break;
 
                     case "√":
                         signo.setText("√");
